@@ -1,0 +1,14 @@
+services:
+  install:
+    image: "krajbanshi/laravel-docker-compose:${VERSION:-latest}"
+    build: 
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/amd64/v2
+        - linux/riscv64
+        - linux/ppc64le
+        - linux/s390x
+        - linux/386
+        
