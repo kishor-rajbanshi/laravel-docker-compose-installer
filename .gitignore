@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.LICENCE
+!README.md
+!compose.yml
+!Dockerfile
+!entrypoint.sh
+!.env.example
