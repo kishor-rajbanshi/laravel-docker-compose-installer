@@ -67,9 +67,16 @@ merge_env_files() {
 		fi
 
 		key="${line%%=*}"
+		key_prefix="${key%%_*}"
 
 		if ! grep -Eq "^${key}=" "$dst_file"; then
-			echo "$line" >>"$dst_file"
+			insert_after=$(awk -v key_prefix="$key_prefix" '$0 ~ "^"key_prefix"_" {line=NR} END{print line}' "$dst_file")
+
+			if [ -n "$insert_after" ]; then
+				sed -i "${insert_after}a $line" "$dst_file"
+			else
+				echo "$line" >>"$dst_file"
+			fi
 		fi
 	done <"$src_file"
 
