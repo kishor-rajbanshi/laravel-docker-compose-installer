@@ -6,3 +6,5 @@
 !Dockerfile
 !entrypoint.sh
 !.env.example
+!.github
+!.github/**
